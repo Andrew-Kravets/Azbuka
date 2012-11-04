@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Азбука веры</string>
+    <string name="start_layout_lib_button">В библиотеку</string>
+    <string name="start_layout_about_button">О проекте</string>
+    <string name="start_layout_how_to_help">Как помочь</string>
+    <string name="start_layout_how_to_help_button">Как помочь</string>
+    <string name="about_project">Предлагаем вашему вниманию библиотеку Святых отцов и Учителей Правосланой Церкви. Библиотека расположена на крупнейшем русскоязычном православном интернет-портале
+        \"Азбука веры\" azbyka.ru. Ежедневно над её пополнением и редактированием трудятся около 15 специалистов. Предложения и замечания просим направлять по адресу: otechnik@azbyka.ru</string>
+    <string name="how_to_help">Приглашаем к сотрудничеству авторов статей по патрологии и владельцев статей и книг в электронном виде.
+        Будем признательны за пожертвования на развитие библиотеки.\n\n
+        Для жертвователей:\n
+        Яндекс-деньги: 41001969506158\n\n
+        WebMoney:\n
+        R953604531574\n
+        Z406176325937</string>
+
+</resources>
