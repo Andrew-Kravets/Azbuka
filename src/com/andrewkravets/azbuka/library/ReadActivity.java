@@ -18,11 +18,14 @@
 package com.andrewkravets.azbuka.library;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.webkit.WebView;
 import com.andrewkravets.azbuka.BaseActivity;
 import com.andrewkravets.azbuka.R;
 import com.andrewkravets.azbuka.library.model.BookObject;
+import com.andrewkravets.azbuka.tools.Connector;
+import com.andrewkravets.azbuka.tools.SetupedDialog;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,7 +36,7 @@ import com.andrewkravets.azbuka.library.model.BookObject;
 public class ReadActivity extends BaseActivity {
 
     WebView webView;
-
+    String data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +44,35 @@ public class ReadActivity extends BaseActivity {
 
         Intent intent = getIntent();
         BookObject bookObject = (BookObject) intent.getSerializableExtra(BaseActivity.INTENT_BOOK);
-        String link = bookObject.getTxtUrl();
 
         webView = (WebView) findViewById(R.id.read_layout_webwiew);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(link);
+        new load().execute(bookObject.getTxtUrl());
+    }
+
+    private class load extends AsyncTask<String, Void, String> {
+        SetupedDialog dialog = new SetupedDialog(ReadActivity.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();    //To change body of overridden methods use File | Settings | File Templates.
+            dialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return Connector.getEntities(strings[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            if(s!=null) {
+                data=s;
+                webView.loadData(data, "text/html; charset=UTF-8", null);
+                webView.invalidate();
+            }
+            dialog.dismiss();
+        }
     }
 }
 

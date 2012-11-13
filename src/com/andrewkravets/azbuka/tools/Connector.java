@@ -50,7 +50,7 @@ public class Connector {
         try {
             HttpResponse response = dhc.execute(get);
             if (response != null) {
-                content = EntityUtils.toString(response.getEntity(), "utf8");
+                content = EntityUtils.toString(response.getEntity(), "utf-8");
             }
         } catch (IOException e) {
             e.printStackTrace();
